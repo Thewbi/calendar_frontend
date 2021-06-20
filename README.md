@@ -2,5 +2,8 @@
 calendar frontend
 
 # starting
+
+```
 npm i
 npm run serve
+```

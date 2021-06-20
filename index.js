@@ -28,8 +28,6 @@ function Calendar(hostElem, id) {
   this.currentlyEditedEvent = undefined;
 
   this.init = function() {
-    //console.log('outputCurrentMonth()');
-
     this.today = new Date();
     this.currentDate = this.today;
 
@@ -87,7 +85,6 @@ function Calendar(hostElem, id) {
 
   this.modalOkBtnClickedHandler = function(event) {
     let labelInput = this.modalElem.querySelector("#labelInput");
-    //console.log(`labelInput.value: ${labelInput.value}`);
 
     if (!labelInput.value) {
       console.log('Not adding event without label!');
@@ -96,8 +93,6 @@ function Calendar(hostElem, id) {
     }
 
     if (this.currentlyEditedEvent) {
-
-      //console.log(`update ${this.currentlyEditedEvent.label} to ${labelInput.value}`);
 
       this.currentlyEditedEvent.label = labelInput.value;
 
@@ -155,11 +150,6 @@ function Calendar(hostElem, id) {
     this.lastDayInCurrentMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
     this.firstDayOfFirstWeekInMonth = this.getFirstDayOfWeek(this.firstDayInCurrentMonth, true)
     this.lastDayOfLastWeekInMonth = this.getLastDayOfWeek(this.lastDayInCurrentMonth, true);
-
-    //console.log('firstDayInCurrentMonth', this.firstDayInCurrentMonth);
-    //console.log('lastDayInCurrentMonth', this.lastDayInCurrentMonth);
-    //console.log('firstDayOfFirstWeekInMonth', this.firstDayOfFirstWeekInMonth);
-    //console.log('lastDayOfLastWeekInMonth', this.lastDayOfLastWeekInMonth);
   }
 
   this.sameDay = function(d1, d2) {
@@ -188,7 +178,6 @@ function Calendar(hostElem, id) {
       dayElem.date = new Date(iteratorDate);
       dayElem.addEventListener('click', (e) => {
         e.stopPropagation();
-        //console.log('day clicked', e.target.date);
         this.dayElementClickedHandler(dayElem);
       });
 
@@ -198,7 +187,6 @@ function Calendar(hostElem, id) {
       controlsElem.innerHTML = "+";
       controlsElem.addEventListener('click', (e) => {
         e.stopPropagation();
-        //console.log('add clicked');
         this.addElementClickedHandler(dayElem);
       });
 
@@ -222,7 +210,6 @@ function Calendar(hostElem, id) {
     eventElem.event = evt;
     eventElem.addEventListener('click', (e) => {
       e.stopPropagation();
-      //console.log('event clicked');
       this.eventElementClickedHandler(eventElem);
     });
 
@@ -231,10 +218,7 @@ function Calendar(hostElem, id) {
   }
 
   this.dayElementClickedHandler = function(dayElem) {
-    console.log('dayElementClickedHandler', dayElem, dayElem.date);
-
     // display a modal containing a area containing all events on that day
-
     let eventsOnDay = this.events.filter(evt => this.sameDay(evt.date, dayElem.date));
     if (eventsOnDay && eventsOnDay.length > 0) {
 
@@ -349,13 +333,9 @@ function Calendar(hostElem, id) {
   }
 
   this.nextButtonHandler = function() {
-    //console.log('nextButtonHandler()', this);
-
     this.currentDate = new Date(this.currentDate);
     this.currentDate.setDate(1);
     this.currentDate.setMonth(this.currentDate.getMonth() + 1);
-
-    console.log(this.currentDate);
 
     this.computeDates(this.currentDate);
     this.clearElements(this.hostElem);
@@ -363,20 +343,14 @@ function Calendar(hostElem, id) {
   }
 
   this.prevButtonHandler = function() {
-    //console.log('prevButtonHandler()', this);
-
     this.currentDate = new Date(this.currentDate);
     this.currentDate.setDate(1);
     this.currentDate.setMonth(this.currentDate.getMonth() - 1);
-
-    console.log(this.currentDate);
 
     this.computeDates(this.currentDate);
     this.clearElements(this.hostElem);
     this.render();
   }
-
-
 }
 
 var host = document.getElementById("cal1");
@@ -395,25 +369,6 @@ for (let i = 0; i < 300; i++) {
   let event = new Event(date, 'event ' + i);
   cal1.events.push(event);
 }
-
-// event = new Event(date, 'b  ');
-// cal1.events.push(event);
-// event = new Event(date, 'c  ');
-// cal1.events.push(event);
-// event = new Event(date, 'd  ');
-// cal1.events.push(event);
-// event = new Event(date, 'e  ');
-// cal1.events.push(event);
-// event = new Event(date, 'f  ');
-// cal1.events.push(event);
-// event = new Event(date, 'g  ');
-// cal1.events.push(event);
-// event = new Event(date, 'h  ');
-// cal1.events.push(event);
-// event = new Event(date, 'i  ');
-// cal1.events.push(event);
-// event = new Event(date, 'k  ');
-// cal1.events.push(event);
 
 cal1.init();
 cal1.render();
