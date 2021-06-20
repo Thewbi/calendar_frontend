@@ -1,0 +1,107 @@
+* {
+  font-family: Arial;
+}
+
+h1 {
+  color: green;
+}
+
+/** calendar */
+
+.host {
+  display: grid;
+  /*grid-template-columns: repeat(7, 1fr);*/
+  grid-template-columns: repeat(7, 1fr);
+
+  /*grid-template-rows: auto auto auto auto auto auto auto; */
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+
+  gap: 0px;
+}
+
+.day-of-week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.day {
+  height:130px;
+  padding: 2px;
+  background-color: coral;
+  color: white;
+  font-size: 25px;
+}
+.day:hover {
+  background-color: rgb(204, 74, 27);
+}
+
+/*.day:hover > .*/
+.day .controls {
+  display: none;
+  float:right;
+}
+
+.day:hover .controls {
+  display: block;
+}
+
+.event {
+  margin: 2px;
+  padding-left: 2px;
+  border-radius: 4px;
+  background-color: white;
+  color: black;
+  font-size: 14px;
+
+  /*
+  overflow: hidden;
+  max-width: 140px;
+  */
+}
+
+/** modal */
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.bnt-row {
+  display: flex;
+  justify-content: space-between;
+
+  padding-top:40px;
+}

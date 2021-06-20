@@ -1,2 +1,6 @@
 # calendar_frontend
-calendar
+calendar frontend
+
+# starting
+npm i
+npm run serve

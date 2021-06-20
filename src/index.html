@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Webpack App 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <button id="prev">Prev</button>
+    <button id="next">Next</button>
+    <div id="month-indicator"></div>
+    <div class="day-of-week">
+      <div>Mo</div>
+      <div>Tu</div>
+      <div>We</div>
+      <div>Th</div>
+      <div>Fr</div>
+      <div>Sa</div>
+      <div>Su</div>
+    </div>
+    <div id="cal1" class="host"></div>
+
+    <!-- The Modal -->
+    <div id="editModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+
+        <span class="close">&times;</span>
+
+        <section id="addEvent">
+          <p id="addEventTitle">Add a new event</p>
+          <input id="labelInput" type="text">
+        </section>
+
+        <section id="listEvents">
+          <p id="listEventsTitle">All events today</p>
+        </section>
+
+        <footer class="bnt-row">
+          <button id="deleteButton">Delete</button>
+          <span class="btn-row-right">
+            <button id="cancelButton">Cancel</button>
+            <button id="submitButton">Ok</button>
+          </span>
+        </footer>
+      </div>
+
+    </div>
+
+  </body>
+</html>
