@@ -1,4 +1,31 @@
 import css from "./src/index.css";
+import header from './src/components/header.html'
+import calendar from './src/components/calendar.html'
+
+window.onload = function() {
+  document.getElementById("header").innerHTML = header;
+  document.getElementById("calendar").innerHTML = calendar;
+
+  var cal1Elem = document.getElementById("cal1");
+
+  const cal1 = new Calendar(cal1Elem, 'cal1');
+
+  let event1 = new Event(new Date(), 'event1');
+  let event2 = new Event(new Date(), 'event2');
+
+  cal1.events.push(event1);
+  cal1.events.push(event2);
+
+  const date = new Date(2021, 5, 10, 0, 0, 0, 0);
+
+  for (let i = 0; i < 300; i++) {
+    let event = new Event(date, 'event ' + i);
+    cal1.events.push(event);
+  }
+
+  cal1.init();
+  cal1.render();
+}
 
 function Event(date, label) {
   this.date = date;
@@ -172,7 +199,7 @@ function Calendar(hostElem, id) {
     while (iteratorDate <= this.lastDayOfLastWeekInMonth && loopBreaker < 100) {
 
       let dayElem = document.createElement('div');
-      host.appendChild(dayElem);
+      this.hostElem.appendChild(dayElem);
       dayElem.classList.add('day');
       dayElem.innerHTML = iteratorDate.getDate();
       dayElem.date = new Date(iteratorDate);
@@ -353,22 +380,3 @@ function Calendar(hostElem, id) {
   }
 }
 
-var host = document.getElementById("cal1");
-
-const cal1 = new Calendar(host, 'cal1');
-
-let event1 = new Event(new Date(), 'event1');
-let event2 = new Event(new Date(), 'event2');
-
-cal1.events.push(event1);
-cal1.events.push(event2);
-
-const date = new Date(2021, 5, 10, 0, 0, 0, 0);
-
-for (let i = 0; i < 300; i++) {
-  let event = new Event(date, 'event ' + i);
-  cal1.events.push(event);
-}
-
-cal1.init();
-cal1.render();
